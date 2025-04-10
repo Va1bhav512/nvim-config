@@ -3,9 +3,16 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
--- EXAMPLE
-local servers = { "html", "cssls", "pyright", "ts_ls" }
+-- EXAMPLE"html-lsp", "css-lsp",
+local servers = { "pyright", "ts_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
+lspconfig.html.setup({})
+lspconfig.cssls.setup({})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.html.setup({ capabilities = capabilities })
+lspconfig.cssls.setup({ capabilities = capabilities })
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
