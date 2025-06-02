@@ -14,16 +14,16 @@ return {
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "html", "css"
+      },
+    },
   },
   {
-      'mrcjkb/rustaceanvim',
+    'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
@@ -54,7 +54,7 @@ return {
     "mfussenegger/nvim-dap",
     lazy = false,
     dependencies = {
-	  "nvim-neotest/nvim-nio",
+      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap-python",
       "theHamsta/nvim-dap-virtual-text",
@@ -123,10 +123,10 @@ return {
       vim.keymap.set("n", "<leader>dO", function()
         dap.step_out()
       end, opts)
-			
+
       -- Keymap to terminate debugging
-	  vim.keymap.set("n", "<leader>dq", function()
-	      require("dap").terminate()
+      vim.keymap.set("n", "<leader>dq", function()
+        require("dap").terminate()
       end, opts)
 
       -- Toggle DAP UI
@@ -135,4 +135,25 @@ return {
       end, opts)
     end,
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+        }
+      })
+    end
+  },
+  -- vim surround
+  -- {
+  --   "kylechui/nvim-surround",
+  --   version = "*",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("nvim-surround").setup({})
+  --   end
+  -- },
 }
